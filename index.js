@@ -1,16 +1,12 @@
-const http = require('http');
+const express = require('express');
 const colors = require('colors');
 
-const port = 3000;
+const server = express();
 
-const handleServer = (request, response) => {
-  response.writeHead(200, { 'Content-type': 'text/html' });
-  response.write('<h1>Hello World from NodeJS</h1>');
-  response.end();
-}
+server.get('/', (request, response) => {
+  response.send('<h1>Hello World from Express and NodeJS</h1>');
+});
 
-const server = http.createServer(handleServer);
-
-server.listen(port, () => {
-  console.log(`Server on port ${port}.`.green);
+server.listen(3000, () => {
+  console.log('Server on port 3000'.yellow);
 });
